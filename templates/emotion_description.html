@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Emotion Description{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Emotional Description</h1>
+
+  
+  <form method="POST" action="{{ url_for('emotion_description') }}">
+    {{ form.hidden_tag() }} <!-- This generates the CSRF token -->
+
+    <div>
+        <!-- Render the label and input for the description field -->
+        {{ form.description.label }}
+        {{ form.description(size=50) }}
+        {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        <!-- Render the submit button -->
+        {{ form.submitfield() }}
+    </div>
+</form>
+
+
+  <p class="important">
+    Welcome on my awesome homepage.
+{% endblock %}

@@ -1,13 +1,9 @@
+# models.py
 from datetime import date
 from typing import List
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import CheckConstraint, Integer, String, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship, DeclarativeBase
-
-class Base(DeclarativeBase):
-    pass
-
-db = SQLAlchemy(model_class=Base)
+from units.db_init import db
+from sqlalchemy import CheckConstraint
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 class EmotionColour(db.Model):
     __tablename__ = 'emotioncolour'
@@ -30,6 +26,8 @@ class EmotionColour(db.Model):
     chocolate: Mapped[float] = mapped_column(nullable=False)
     dark_yellow: Mapped[float] = mapped_column(nullable=False)
     light_green: Mapped[float] = mapped_column(nullable=False)
+    
+    sample_size:Mapped[int] = mapped_column(nullable=False)
     
     records: Mapped[List["Record"]] = relationship("Record", back_populates="emotioncolour")
 
@@ -55,16 +53,10 @@ class Record(db.Model):
     __tablename__ = 'records'
     
     record_id: Mapped[int] = mapped_column(primary_key=True)
-    emotion_name: Mapped[str] = mapped_column(ForeignKey("emotioncolour.emotion_name"), nullable=False)
+    emotion_name: Mapped[str] = mapped_column(db.ForeignKey("emotioncolour.emotion_name"), nullable=False)
     likelihood_score: Mapped[float] = mapped_column(nullable=False)
     colour_displayed: Mapped[str] = mapped_column(nullable=False)
     record_date: Mapped[date] = mapped_column(nullable=False)
     colour_match: Mapped[bool] = mapped_column(nullable=False)
     
     emotioncolour: Mapped["EmotionColour"] = relationship("EmotionColour", back_populates="records")
-
-# Function to initialize the database
-def init_db(app):
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
