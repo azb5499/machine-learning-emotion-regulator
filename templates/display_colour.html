@@ -2,11 +2,10 @@
 {% block title %}Display Colour{% endblock %}
 
 {% block head %}
-  {{ super() }}
   <style>
     .custom-box {
         width: 100vw;
-        height: 100vh;
+        height: 50vh;
         border: 1px solid #333;
         margin: 0;
         padding: 0;
@@ -15,20 +14,9 @@
         align-items: center;
         font-size: 24px;
         color: #fff;
+        box-sizing: border-box; 
     }
 
-    #yes-button, #no-button {
-        margin-top: 20px;
-        font-size: 18px;
-        padding: 10px;
-        display: none;
-    }
-
-    /* Disabled button style */
-    .disabled {
-        background-color: #ddd;
-        cursor: not-allowed;
-    }
   </style>
 {% endblock %}
 
@@ -39,10 +27,11 @@
       </div>
   </div>
 
-  <div id="buttons-container" style="text-align: center;">
-      <button id="yes-button">Yes, this is the correct colour</button>
-      <button id="no-button">No, show the next colour</button>
-  </div>
+  <div id="buttons-container">
+    <button id="yes-button">Yes, this is the correct colour</button>
+    <button id="no-button">No, show the next colour</button>
+</div>
+</div>
 
   <script>
     let emotion_name;

@@ -7,28 +7,21 @@
   </style>
 {% endblock %}
 {% block content %}
-  <h1>Emotional Description</h1>
-
-  
-  <form method="POST" action="{{ url_for('emotion_description') }}">
-    {{ form.hidden_tag() }} <!-- This generates the CSRF token -->
-
-    <div>
-        <!-- Render the label and input for the description field -->
-        {{ form.description.label }}
-        {{ form.description(size=50) }}
+  <div class="frosted-glass2">
+    <h1>EMOTIONAL DESCRIPTION</h1>
+    <form method="POST" action="{{ url_for('emotion_description') }}">
+      {{ form.hidden_tag() }} 
+      <div class="form-group">
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control", size=50) }}
         {% for error in form.description.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+          <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
-    </div>
+      </div>
 
-    <div>
-        <!-- Render the submit button -->
-        {{ form.submitfield() }}
-    </div>
-</form>
-
-
-  <p class="important">
-    Welcome on my awesome homepage.
+      <div class="form-group">
+        {{ form.submitfield(class="btn-pink") }}
+      </div>
+    </form>
+  </div>
 {% endblock %}
