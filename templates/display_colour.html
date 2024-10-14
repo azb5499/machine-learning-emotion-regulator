@@ -2,22 +2,6 @@
 {% block title %}Display Colour{% endblock %}
 
 {% block head %}
-  <style>
-    .custom-box {
-        width: 100vw;
-        height: 50vh;
-        border: 1px solid #333;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        color: #fff;
-        box-sizing: border-box; 
-    }
-
-  </style>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +11,7 @@
       </div>
   </div>
 
-  <div id="buttons-container">
+  <div class="frosted-glass" id="buttons-container">
     <button id="yes-button">Yes, this is the correct colour</button>
     <button id="no-button">No, show the next colour</button>
 </div>
@@ -75,6 +59,12 @@
             document.getElementById('yes-button').style.display = 'inline-block';
             document.getElementById('no-button').style.display = 'inline-block';
             resetButtons();  // Enable buttons again for new color
+            
+        // Scroll to the buttons when they are displayed
+            document.getElementById('buttons-container').scrollIntoView({
+                behavior: 'smooth',  // Makes the scroll smooth
+                block: 'center',     // Scrolls to the center of the viewport
+            });
         }, 5000);
     }
 
@@ -131,5 +121,9 @@
 
     showNextColour();
   </script>
+
+{% endblock %}
+
+{% block footer %}
 
 {% endblock %}

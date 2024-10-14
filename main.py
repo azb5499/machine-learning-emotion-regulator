@@ -1,5 +1,5 @@
 # Non-personal imports
-from flask import Flask, json, jsonify,  render_template, abort, redirect, url_for, request
+from flask import Flask, json, jsonify,  render_template, abort, redirect, url_for, request, flash
 from datetime import date
 from flask_wtf.csrf import CSRFProtect
 from markupsafe import escape
@@ -283,6 +283,24 @@ def delete_record(record_id):
     if RecordDAO.delete_record(record_id):
         return jsonify({"message": "Record deleted successfully"})
     return jsonify({"error": "Record not found"}), 404
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        # Get form data
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        # Form validation (you can customize this further)
+        if not name or not email or not message:
+            flash("Please fill out all fields.", "error")
+        else:
+            # Handle form submission (e.g., send email or store in database)
+            flash("Thank you for contacting us!", "success")
+            return redirect('/contact')  # Redirect to prevent form re-submission
+
+    return render_template('contact.html')
 
 # Running the app -------------------------------------------------------------------------------------------------------
 

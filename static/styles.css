@@ -44,7 +44,33 @@ header {
     padding: 10px; /* Increased padding to make the nav thicker */
 }
 
+.contact-form-container {
+    padding: 20px; /* Add padding inside the frosted glass */    
+}
 
+.contact-content {
+    display: flex; /* Use flexbox to align image and form side by side */
+    align-items: center; /* Center the items vertically */
+}
+
+.contact-image {
+    flex: 0 0 300px; /* Set a fixed width for the image */
+    width: 50%; /* Adjust the size as needed */
+    max-width: 300px; /* Limit maximum width for larger screens */
+    margin-right: 20px; /* Space between image and form */
+    display: flex; /* Use flex to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.contact-image img {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+/* Styles for all list items */
 nav ul li {
     display: inline;
     font-family: "Montserrat", sans-serif;
@@ -54,19 +80,34 @@ nav ul li {
 
 /* Normal link style */
 nav ul li a {
-    color: rgb(62, 37, 37);
+    color: rgb(62, 37, 37); /* Consistent text color for all items */
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease; 
-    padding: 10px 15px; 
-    border-radius: 5px; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Only background color transitions */
 }
 
-/* Hover effect: Different color on hover */
-nav ul li a:hover {
-    background-color: #326638; /* Pink background on hover */
-    color: white; /* White text on hover */
-    border-radius: 5px; /* Keep rounded corners on hover */
+/* Hover effect for each item (different background colors) */
+/* First item hover */
+nav ul li:nth-child(1) a:hover {
+    background-color: lightblue;
 }
+
+/* Second item hover */
+nav ul li:nth-child(2) a:hover {
+    background-color: rgb(141, 205, 211);
+}
+
+/* Third item hover */
+nav ul li:nth-child(3) a:hover {
+    background-color: rgb(249, 249, 134);
+}
+
+/* Fourth item hover */
+nav ul li:nth-child(4) a:hover {
+    background-color: rgb(241, 171, 196);
+}
+
 /* Styles for the navbar logo */
 .navbar-logo {
     height: 35px; /* Adjust the height to fit your design */
@@ -184,6 +225,7 @@ h2{
     display: inline-block;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Added transform transition */
     font-family: "Montserrat", "sans-serif";
+    width: auto;
 }
 
 .btn-get-started:hover {
@@ -193,8 +235,8 @@ h2{
 }
 
 /* Style for the buttons */
-#yes-button, #no-button {
-    background-color: #55898c;
+#yes-button {
+    background-color: #77bc66;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -206,20 +248,39 @@ h2{
     font-family: "Montserrat", "sans-serif";
 }
 
-#yes-button:hover, #no-button:hover {
-    background-color: #e87ca2; /* Pink hover color */
+#no-button {
+    background-color: #e27373;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 10px 0;            /* Small margin between buttons */
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    font-family: "Montserrat", "sans-serif";
+}
+
+#no-button:hover {
+    background-color: #fe2727; /* Green hover color */
+    color: #fff;
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+#yes-button:hover {
+    background-color: #2e7637; /* Pink hover color */
     color: #fff;
     transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
 #buttons-container {
     position: fixed;           /* Fix buttons at the top */
-    top: 20px;                 /* Distance from the top */
     left: 50%;                 /* Center horizontally */
     transform: translateX(-50%); /* Correct for centering */
     display: flex;
-    flex-direction: column;    /* Stack buttons vertically */
+    flex-direction: row;    /* Stack buttons vertically */
     align-items: center;
+    gap: 20px;
     justify-content: center;
     width: auto;               /* No extra width for container */
     z-index: 999;              /* Ensure buttons appear above other content */
@@ -270,11 +331,25 @@ p {
     transition: box-shadow 0.3s ease; /* Only animate shadow on hover */
 }
 
+.about-image {
+    width: 100%; /* Make the image take the full width of its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners */
+    margin-top: 15px; /* Add some space between the text and the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
 .about-first {
     background-color: #e0f7fa; /* Example color for the first section */
-    border-color: #7ec8e3;
+    border-color: #16617d;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid transparent; /* Placeholder for animated border effect */
     padding: 20px;
     margin-bottom: 20px;
+    transition: box-shadow 0.3s ease; /* Only animate shadow on hover */
+
 }
 
 
@@ -348,6 +423,92 @@ p {
 #buttons-container {
     text-align: center;
     position: relative; /* Ensures z-index works */
-    z-index: 100; /* Set a high value to place it above other elements */
-    margin-top: 20px;
+}
+
+
+/*Contact Page styling*/
+/* Form Styling */
+/* Contact Form Specific Styling */
+.contact-form-container h1 {
+    margin-top: 60px;
+    margin-bottom: 40px; /* Space below the heading */
+}
+
+.contact-form-container p {
+    color: burgundy; /* Change the color to burgundy */
+    margin-bottom: 10px; /* Space below the paragraph */
+}
+
+.contact-form-container label {
+    font-family: "Montserrat", sans-serif; /* Montserrat for labels */
+    font-weight: bold;
+    font-size: 12px; /* Increase label size */
+    margin-bottom: 5px;
+    text-align: left; /* Align labels to the left */
+}
+
+.contact-form-container p {
+    color: #4f1515; /* Change the color to burgundy */
+    font-size: 18px; /* Increase font size for better readability */
+    font-weight: 300; /* Make the text slightly bolder for emphasis */
+}
+
+.contact-form-container form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 2px solid #ccc; /* Add a border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    width: 100%; /* Make input boxes take up the full width of the container */
+    max-width: 600px; /* Optional: Set a maximum width for larger screens */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.contact-form-container textarea {
+    height: 150px; /* Increase the height of the message textarea */
+}
+
+.flash-messages {
+    list-style: none;
+    padding: 0;
+}
+
+.flash-messages li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.flash-messages .error {
+    background-color: #e74c3c;
+}
+
+.flash-messages .success {
+    background-color: #2ecc71;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: transparent;
+    margin: 20px 0;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    position: relative;
+    margin-bottom: 40px;
 }

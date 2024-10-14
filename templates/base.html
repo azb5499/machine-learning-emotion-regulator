@@ -13,7 +13,8 @@
             <ul>
                 <img src="https://th.bing.com/th/id/R.7e935370d5f0afb0a7bb33ede3a15385?rik=s8hH86oVtB8Z7g&pid=ImgRaw&r=0" alt="Logo" class="navbar-logo">
                 <li><a href="{{ url_for('home') }}">HOME</a></li>
-                <li><a href="{{ url_for('home') }}">CONTACT US</a></li>
+                <li><a href="{{ url_for('emotion_description') }}">COLOUR THERAPY</a></li>
+                <li><a href="{{ url_for('contact') }}">CONTACT US</a></li>
 
                 <!-- Add more links here if needed -->
             </ul>
@@ -24,8 +25,11 @@
         {% block content %}{% endblock %}
     </main>
 
+ 
+    {% block footer %}
     <footer>
         <p>&copy; 2024 Dut Honourable Members App</p>
     </footer>
+    {% endblock %}
 </body>
 </html>
